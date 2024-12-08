@@ -1,2 +1,2 @@
-[Go Here](https://ctechfilmuniversity.github.io/workshop_sose24_shader_programming/)
+[Go Here](https://ctechfilmuniversity.github.io/workshop_ws2425_matsha/)
 
