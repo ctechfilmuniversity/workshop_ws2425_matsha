@@ -8,7 +8,7 @@ class: center, middle, inverse
 
 # Materials and Shading Workshop
 
-### 02 - Shading
+### Shading
 
 <!--
 
@@ -526,3 +526,8 @@ template:inverse
     * The material editing system within a 3D environment
     * **The material editing system within a 3D environment and add to that with GLSL**
     * Build your own rendering engine, including the materials, within the fragment shader
+
+
+
+---
+template:inverse

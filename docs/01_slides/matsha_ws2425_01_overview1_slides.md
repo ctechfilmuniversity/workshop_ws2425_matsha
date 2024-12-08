@@ -8,7 +8,7 @@ class: center, middle, inverse
 
 # Materials and Shading Workshop
 
-### 01 - Overview
+### Overview 1
 
 <!--
 
@@ -152,4 +152,9 @@ Looks simple enough, right? 😎
 
 * The goal is to re-implement the material available in Three.js
 * And with that I want to demonstrate that commonly used concepts aren't that complicated
+
+
+
+---
+template:inverse
 

@@ -8,7 +8,7 @@ class: center, middle, inverse
 
 # Materials and Shading Workshop
 
-### 03 - Local Illumination
+### Local Illumination
 
 <!--
 
@@ -1599,3 +1599,7 @@ template:inverse
 
 --
     * Modulation of the highlight with a shininess exponent
+
+
+---
+template:inverse
