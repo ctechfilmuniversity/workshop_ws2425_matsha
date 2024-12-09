@@ -70,12 +70,14 @@ Why am I saying this? To give a better overview of the topic field and if there 
 
 * Shading
 
+
+--
+* Local Illumination
+
 --
 
 * Re-cap Shader Programming Environment
 
---
-* Local Illumination
 
 --
 * Example: Implementation of a basic material
@@ -95,9 +97,6 @@ Why am I saying this? To give a better overview of the topic field and if there 
 * Material Properties
 
 --
-* Global Illumination
-
---
 * Non Photorealistic Rendering (NPR)
 
 --
@@ -110,6 +109,9 @@ Why am I saying this? To give a better overview of the topic field and if there 
 ## Workshop Topics
 
 ### Day 3
+
+--
+* Global Illumination
 
 --
 * Example: Implementation of a complex material

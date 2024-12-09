@@ -1396,9 +1396,30 @@ A model that recreates believable specular highlights uses again the **cos** fun
 
 ## Specular Reflection
 
+.center[<img src="img/reflection_vector.png" alt="reflection_vector" style="width:40%;"> <img src="./img/dot_product.png" alt="dot_product" style="width:25%;"> ]
+
+
+\\[{cos^{n}\alpha} = max(0, R \cdot V)\\]
+
+---
+.header[Specular Reflection Computation]
+
+## Specular Reflection
+
+.center[<img src="img/shading_07.png" alt="shading_07" style="width:50%;"> ]
+
+How about the shape of the highlight?
+
+---
+.header[Specular Reflection Computation]
+
+## Specular Reflection
+
 .center[<img src="img/cos_expo_01.png" alt="cos_expo_01" style="width:90%;">]  
 
 .footnote[[[cglearn](https://cglearn.eu/images/seminar/light/cosinePower.gif)]]
+
+
 
 ---
 .header[Specular Reflection Computation]
@@ -1414,7 +1435,7 @@ A model that recreates believable specular highlights uses again the **cos** fun
 ## Specular Reflection
 
 
-.center[<img src="img/shininess_cut.png" alt="shininess_cut" style="width:32%;"> <img src="img/reflection_vector.png" alt="reflection_vector" style="width:40%;"> <img src="./img/dot_product.png" alt="dot_product" style="width:25%;"> ]
+.center[<img src="img/reflection_vector.png" alt="reflection_vector" style="width:40%;"> <img src="./img/dot_product.png" alt="dot_product" style="width:25%;"><img src="img/shininess_cut.png" alt="shininess_cut" style="width:32%;">  ]
 
 
 \\[{cos^{n}\alpha} = max(0, R \cdot V)^{n}\\]
