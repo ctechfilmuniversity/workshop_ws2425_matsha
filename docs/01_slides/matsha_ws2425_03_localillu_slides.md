@@ -591,15 +591,13 @@ template:inverse
 ]
 
 
----
-.header[Local Illumination]
-## Light Reaching the Camera?
 
+???
 
 .center[<img src="img/shadingtechniques.jpg" alt="shadingtechniques" style="width:100%;"> .imgref[[[Nitram]](https://nitramcharcoal.com/basic-shading-techniques/)]]
 
 
----
+
 .header[Local Illumination]
 ## Light Reflected?
 
@@ -608,7 +606,7 @@ template:inverse
 
 ---
 .header[Local Illumination]
-## Adjust The Brightness?
+## Adjust The Brightness!
 
 .center[<img src="img/shadingtechniques.jpg" alt="shadingtechniques" style="width:100%;"> .imgref[[[Nitram]](https://nitramcharcoal.com/basic-shading-techniques/)]]
 
@@ -617,8 +615,6 @@ template:inverse
 *  of the Surface Point
 
 
-
----
 .header[Local Illumination]
 ## Light Reaching the Camera?
 
@@ -628,7 +624,7 @@ template:inverse
 
 ---
 .header[Local Illumination]
-## Adjust The Brightness?
+## Adjust The Brightness
 
 
 .center[<img src="img/shading_03_sp.png" alt="shading_03_sp" style="width:55%;">]
@@ -1244,12 +1240,12 @@ float diffuseReflection(vec3 normal, vec3 light_direction_to_point) {
 ```
 
 
----
-template:inverse
+
+???
+* text
 
 # Let's Code!
 
----
 .header[Local Illumination]
 
 ## Coding
@@ -1492,6 +1488,19 @@ template:inverse
 
 ???
 * Continue with previous code
+
+---
+.header[Local Illumination]
+
+## Coding
+
+* Download Phong Material -> 2. Shading: [steps], **[code]**
+* Run the code
+    * Unzip the folder
+    * With a terminal navigate into the folder 
+    * Install the dependencies with **`npm install`**
+    * Start a local server with **`npm run dev`**
+    * Open localhost in browser
 
 ---
 template:inverse
