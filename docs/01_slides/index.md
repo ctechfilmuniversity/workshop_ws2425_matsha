@@ -20,3 +20,4 @@ In this section you find all slides for the course.
 * [Overview 2](./matsha_ws2425_04_overview2_slides.html)
 * [BRDFs](./matsha_ws2425_05_brdf_slides.html)
 * [Material Properties](./matsha_ws2425_06_matprops_slides.html)
+* [Non-Photorealistic Materials](matsha_ws2425_07_npr_slides.html)
