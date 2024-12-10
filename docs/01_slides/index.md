@@ -14,7 +14,9 @@ Prof. Dr. Lena Gieseke \| l.gieseke@filmuniversitaet.de
 
 In this section you find all slides for the course.  
 
-
 * [Overview 1](./matsha_ws2425_01_overview1_slides.html)
 * [Shading](./matsha_ws2425_02_shading_slides.html)
 * [Local Illumination](./matsha_ws2425_03_localillu_slides.html)
+* [Overview 2](./matsha_ws2425_04_overview2_slides.html)
+* [BRDFs](./matsha_ws2425_05_brdf_slides.html)
+* [Material Properties](./matsha_ws2425_06_matprops_slides.html)
