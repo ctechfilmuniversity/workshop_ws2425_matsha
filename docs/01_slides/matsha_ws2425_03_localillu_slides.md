@@ -1198,8 +1198,7 @@ The dot product becomes negative when the surface is facing away from the light 
 
 
 ???
-.task[COMMENT:]  
- 
+
   
 * ANy ideas how to do this algorithmically? What to do with cosinus?
 

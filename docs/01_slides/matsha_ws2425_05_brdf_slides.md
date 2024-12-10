@@ -163,37 +163,6 @@ Lambertian diffuse BRDF vs. Disney diffuse BRDF
 
 *  a comparison between a simple Lambertian diffuse BRDF and the higher quality Disney diffuse BRDF, using a fully rough dielectric material. For comparison purposes, the right sphere was mirrored. The surface response is very similar with both BRDFs but the Disney one exhibits some nice retro-reflections at grazing angles (look closely at the left edge of the spheres). 
 
----
-
-.header[BRDFs]
-
-## Diffuse & Specular Reflection
-
-<img src="img/brdfs_compare_01.png" alt="brdfs_compare_01" style="width:56%;"> .imgref[[[blender]](https://docs.blender.org/manual/en/2.79/render/blender_render/materials/properties/diffuse_shaders.html)]
-
-
-
----
-
-.header[BRDFs]
-
-## Glossiness
-
-BRDFs are often a careful mixture of diffuse und specular reflection, e.g. to control *glossiness*.
-
-
-???
-  
-
-* in dielectric, you have both (and for physically based workflow they should never exceed 100%). If you have a certain amount of specular reflection you will have an inversely proportional amount of diffuse reflection and vice versa.
-
----
-
-.header[BRDFs | Glossiness]
-
-.center[<img src="img/gloss_01.jpg" alt="gloss_01" style="width:66%;">  
-[[stackexchange]](https://computergraphics.stackexchange.com/questions/5482/what-is-the-difference-between-glossy-and-specular-reflectionl)]
-
 
 ---
 ## Material Properties
@@ -378,7 +347,7 @@ template:inverse
 
 --
 
-* Making use of better computational capabilities, leading to physically more accurate models
+* Computational capabilities, leading to physically more accurate models
 
 
 ???
@@ -441,63 +410,6 @@ The principles are
 
 They compared existing models with measured surface values to accurately represent real-world materials and combined them with artist-friendly parameterization.
 
----
-.header[Physically-Based Shading | Disney's Principled BRDF]
-
-## Parameter
-
-
-???
-  
-
-* We thoroughly debated the addition of each parameter. In the end we ended up with one color
-parameter and ten scalar parameters described in the following section
-
----
-
-
-<img src="img/disney_brdf_01.png" alt="disney_brdf_01" style="width:75%;"> .imgref[[[disneyanimation]](https://disneyanimation.com/publications/physically-based-shading-at-disney/)]
-
-
-???
-  
-
-* *baseColor*: the surface color, usually supplied by texture maps.
-* *subsurface*: controls diffuse shape using a subsurface approximation.
-* *metallic*: the metallic-ness (0 = dielectric, 1 = metallic). This is a linear blend between two
-different models. The metallic model has no diffuse component and also has a tinted incident
-specular, equal to the base color.
-* *specular*: incident specular amount. This is in lieu of an explicit index-of-refraction.
-* *specularTint*: a concession for artistic control that tints incident specular towards the base color. Grazing specular is still achromatic.
-* *roughness*: surface roughness, controls both diffuse and specular response.
-* *anisotropic*: degree of anisotropy. This controls the aspect ratio of the specular highlight. (0 = isotropic, 1 = maximally anisotropic.)
-* *sheen*: an additional grazing component, primarily intended for cloth.
-* *sheenTint*: amount to tint sheen towards base color.
-* *clearcoat*: a second, special-purpose specular lobe.
-* *clearcoatGloss*: controls clearcoat glossiness (0 = a “satin” appearance, 1 = a “gloss” appearan
-
-Some models include a diffuse Fresnel factor.
-
----
-.header[Physically-Based Shading | Disney's Principled BRDF]
-
-## Parameter Blending
-
-All the parameters are normalized and perceptually linear. Hence materials can interpolate intuitively.
-
-<br />
-
-
-.center[<img src="img/disney_brdf_02.png" alt="disney_brdf_02" style="width:100%;"> .imgref[[[disneyanimation]](https://disneyanimation.com/publications/physically-based-shading-at-disney/)]
-]  
-
-
-???
-  
-
-* Interpolating between two very different materials, shiny metallic gold and blue rubber,
-using our model.
-* https://arxiv.org/pdf/2302.03619.pdf
 
 
 ---

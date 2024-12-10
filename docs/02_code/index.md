@@ -14,6 +14,8 @@ In this section you find all code examples for the course.
     * [Day 1](#day-1)
         * [Pipeline](#pipeline)
         * [Phong Material](#phong-material)
+    * [Day 2](#day-2)
+        * [Simple Toon Shading](#simple-toon-shading)
 
 
 ## Run The Examples
@@ -46,9 +48,16 @@ You can find explanations about setting up a vertex and a fragment shader within
 2. Lighting: [steps](./02_lights/lights_steps.md), [code](./02_lights/lights_code.zip)
 3. Phong: [steps](./03_phong/phong_steps.md), [code](./03_phong/phong_code.zip)
 
+## Day 2
+
+### Simple Toon Shading
+
+4. Toon Shading: [steps](./04_toon/toon_steps.md), [code](./04_toon/toon_code.zip)
+5. Fresnel Experiment: [code](./05_fresnel/fresnel_code.zip)
+
 
 <!-- 
-## Day 2
+
   
 
 ## Day 3
