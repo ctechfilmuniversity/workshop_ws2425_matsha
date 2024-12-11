@@ -343,7 +343,7 @@ template:inverse
 
 ## Physically-Based Shading
 
-> PBR is more a *concept* than a strict set of rules, and as such, the exact implementations of PBR systems tend to vary.
+> PBR is more a *concept* than a strict set of rules, and as such, the exact implementations of PBR systems vary.
 
 --
 
@@ -358,7 +358,7 @@ template:inverse
   
 --
   
-Both aspects - realistic looking and usable models - led to the term Physically-Based Rendering (PBR).
+Both aspects - realistic looking and usable models - led to the term Physically-Based (PB).
 
 
   
@@ -385,7 +385,7 @@ Main goal: an **art directable** model!
 
 ## Disney's Principled BRDF
 
-It's  **principled model** rather than a strictly physical one.  
+It is a **principled model** rather than a strictly physical one.  
   
 --
   
