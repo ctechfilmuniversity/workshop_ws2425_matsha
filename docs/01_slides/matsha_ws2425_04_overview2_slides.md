@@ -43,6 +43,8 @@ layout:false
 ---
 ## Phong Implementation
 
+--
+
 ```glsl
 //$max(0, L ∙ N)
 
@@ -75,6 +77,8 @@ float specularReflection(vec3 normal, vec3 lightDirection,
 
 Design decision or as user input: color of the highlight?
 
+--
+
 ```glsl
 const material = new THREE.MeshPhongMaterial();
 material.shininess = 100
@@ -101,10 +105,13 @@ material.specular = new THREE.Color(0x1188ff)
 * *On a Side Note*: Implementation of NPR materials
 
 
+---
 
-???
+## Workshop Topics
 
-.todo[TODO:Teaser Image]
+### Day 2
+
+.center[<img src="./img/fresnel_coding_01.png" alt="fresnel_coding_01" style="width:90%;"> ]
 
 
 <!----------------------------------------------------------------------------->

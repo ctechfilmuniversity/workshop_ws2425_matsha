@@ -7,7 +7,7 @@ nav_exclude: true
 
 # Basic Toon Shading
 
-The following steps are based on the solution of [03_phong](../03_phong/phong_steps.md).
+The following steps are building up upon the solution of [03_phong](../03_phong/phong_steps.md).
 
 ### Step Function For Diffuse Shading
 
@@ -43,7 +43,7 @@ As the outline only depends on the view, we do not need to compute it for each l
 ```glsl
 // Black color if dot product is smaller than 0.2
 // else keep the same colors
-float edge = (dot(view_dir, normal) > 0.2) ? 1.0 : 0.0;
+float edge = (dot(-viewDirection, normal) > 0.3) ? 1.0 : 0.0;
 toon *= edge;
 ```
 
@@ -54,8 +54,8 @@ For this we clamp the specular reflection value
 ```glsl
 
 // A Small Highlight
-float mask = (spec > 0.9) ? 0.8 : 0.0;
-toon += (spec * mask);
+float mask = (specular > 0.6) ? 1.0 : 0.0;
+toon += (specular * mask);
 ```
 
 We can furthermore use the `spec` value to clamp an outline for the highlight if so desired
