@@ -15,7 +15,9 @@ In this section you find all code examples for the course.
         * [Pipeline](#pipeline)
         * [Phong Material](#phong-material)
     * [Day 2](#day-2)
-        * [Simple Toon Shading](#simple-toon-shading)
+        * [NPR Shading Experiments](#npr-shading-experiments)
+    * [Day 3](#day-3)
+        * [GPGPU Particle Simulation](#gpgpu-particle-simulation)
 
 
 ## Run The Examples
@@ -50,15 +52,14 @@ You can find explanations about setting up a vertex and a fragment shader within
 
 ## Day 2
 
-### Simple Toon Shading
+### NPR Shading Experiments
 
 4. Toon Shading: [steps](./04_toon/toon_steps.md), [code](./04_toon/toon_code.zip)
 5. Fresnel Experiment: [code](./05_fresnel/fresnel_code.zip)
 
 
-<!-- 
-
-  
-
 ## Day 3
-   -->
+
+### GPGPU Particle Simulation
+
+6. GPGPU Particle Simulation: [stepa](./06_gpgpu/gpgpu_steps.md), [code](./06_gpgpu/gpgpu_code.zip)

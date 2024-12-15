@@ -32,34 +32,36 @@ We can now define for each surface point how the incoming light is reflected.
 
 --
 
-Well, that is all nice and well but what is still missing?
+> What is still missing?
+
+--
+
+<br />
+Indirect light, computed by global illumination.
 
 ---
-## Indirect Illumination
+.header[Indirect Illumination]
 
-.center[<img src="img/illu_indirect_03.png" alt="illu_indirect_03" style="width:80%;">  
-[Lux Renderer]]
+.center[<img src="img/illu_indirect_03.png" alt="illu_indirect_03" style="width:70%;">]
 
 .footnote[[TU Wien | Rendering 186.101 | Károly Zsolnai-Fehér]]
 
----
 
-## Indirect Illumination
+---
+.header[Indirect Illumination]
 
 .center[<img src="img/illu_indirect_02.png" alt="illu_indirect_02" style="width:80%;">  
-[[fantasylab]](http://www.fantasylab.com/newpages/back.jpg)]
+.imgref[[[fantasylab]](http://www.fantasylab.com/newpages/back.jpg)]]
 
 .footnote[[TU Wien | Rendering 186.101 | Károly Zsolnai-Fehér]]
 
 
 ---
-
-
-## Indirect Illumination
+.header[Indirect Illumination]
 
 .center[<img src="img/illu_indirect_01.png" alt="illu_indirect_01" style="width:80%;">  
-[[aztadom]](http://aztadom.co/wp-content/uploads/2014/04/cuki_aranyos_allat_10.jpg
-)]
+.imgref[[[aztadom]](http://aztadom.co/wp-content/uploads/2014/04/cuki_aranyos_allat_10.jpg
+)]]
 
 .footnote[[TU Wien | Rendering 186.101 | Károly Zsolnai-Fehér]]
 
@@ -70,7 +72,9 @@ Well, that is all nice and well but what is still missing?
 
 We need light from all directions!
 
-.center[<img src="img/global_illumination_01.png" alt="global_illumination_01" style="width:100%;">]
+--
+
+.center[<img src="img/global_illumination_01.png" alt="global_illumination_01" style="width:80%;">]
 
 
 ---
@@ -79,7 +83,7 @@ We need light from all directions!
 
 We need light from all directions!
 
-.center[<img src="img/global_illumination_02.png" alt="global_illumination_02" style="width:100%;">]
+.center[<img src="img/global_illumination_02.png" alt="global_illumination_02" style="width:90%;">]
 
 
 
@@ -89,7 +93,7 @@ We need light from all directions!
 
 We need light from all directions!
 
-.center[<img src="img/global_illumination.png" alt="global_illumination" style="width:100%;">]
+.center[<img src="img/global_illumination.png" alt="global_illumination" style="width:70%;">]
 
 
 
@@ -97,27 +101,35 @@ We need light from all directions!
 
 ## Local Illumination
 
-.center[<img src="img/direct_lighting.png" alt="direct_lighting" style="width:86%;"> ]  
-[[wiki]](https://www.wikiwand.com/en/Global_illumination)
+.center[<img src="img/direct_lighting.png" alt="direct_lighting" style="width:58%;"> ] .imgref[[[wiki]](https://www.wikiwand.com/en/Global_illumination)]
 
 ---
 
 ## Global Illumination
 
-.center[<img src="img/global_illumination1.png" alt="global_illumination1" style="width:86%;">]  
-[[wiki]](https://www.wikiwand.com/en/Global_illumination)
+.center[<img src="img/global_illumination1.png" alt="global_illumination1" style="width:58%;"> ] .imgref[[[wiki]](https://www.wikiwand.com/en/Global_illumination)]
 
 
+---
+.header[Illumination]
 
+## Summary
 
-    Local illumination – idea that objects are only illuminated directly by the light sources
-    Global illumination – idea that objects do not only reflect light to the viewer, but also to other objects
+--
+
+Local illumination
+* Objects are only illuminated directly by the light sources
+
+--
+
+Global illumination
+* Ojects do not only reflect light to the viewer, but also to other objects
 
 
 ---
 template: inverse
 
-## Rendering Equation
+# Rendering Equation
 
 ---
 
@@ -137,7 +149,7 @@ Light from all directions...
 
 --
 
-.center[<img src="img/global_illumination_04.png" alt="global_illumination_04" style="width:100%;">]
+.center[<img src="img/global_illumination_04.png" alt="global_illumination_04" style="width:80%;">]
 
 
 
@@ -169,7 +181,7 @@ BRDF with what? Which light do we get?
 
 --
 
-.center[<img src="img/global_illumination_06.png" alt="global_illumination_06" style="width:100%;">]
+.center[<img src="img/global_illumination_06.png" alt="global_illumination_06" style="width:80%;">]
 
 ---
 
@@ -183,7 +195,7 @@ The incoming light in x is the rendering equation of y...
 
 --
 
-.center[<img src="img/global_illumination_07.png" alt="global_illumination_07" style="width:100%;">]
+.center[<img src="img/global_illumination_07.png" alt="global_illumination_07" style="width:80%;">]
 
 
 ---
@@ -204,7 +216,7 @@ Infinite-dimensional!
 
 --
 
-.center[<img src="img/global_illumination_09.png" alt="global_illumination_09" style="width:40%;">]
+.center[<img src="img/global_illumination_09.png" alt="global_illumination_09" style="width:30%;">]
 
 ---
 
@@ -247,13 +259,11 @@ https://www.techspot.com/article/2485-path-tracing-vs-ray-tracing/
 
 --
 
-.center[<img src="img/global_illumination_10.png" alt="global_illumination_10" style="width:78%;">]
+.center[<img src="img/global_illumination_10.png" alt="global_illumination_10" style="width:48%;">]
 
 
 ---
-.header[Global Illumination]
-
-## Ray Tracing With More Rays
+.header[Global Illumination | Ray Tracing With More Rays]
 
 
 .center[<img src="img/rt_reflection_01.gif" alt="rt_reflection_01" style="width:55%;">]
@@ -296,8 +306,9 @@ The number of rays traced grows exponentially with every bounce.
 
 What millions of rays can achieve...
 
-.center[<img src="img/rt_result_01.png" alt="rt_result_01" style="width:70%;">]  
-[[Gilles Tran, wiki]](https://commons.wikimedia.org/wiki/File:Glasses_800_edit.png) [[techspot]](https://www.techspot.com/article/2485-path-tracing-vs-ray-tracing/)
+---
+
+.center[<img src="img/rt_result_01.png" alt="rt_result_01" style="width:80%;">] .imgref[[[Gilles Tran, wiki]](https://commons.wikimedia.org/wiki/File:Glasses_800_edit.png) [[techspot]](https://www.techspot.com/article/2485-path-tracing-vs-ray-tracing/)]
 
 
 ---
@@ -318,9 +329,13 @@ Path tracing started as Monte Carlo ray tracing (James Kajiya once again!), whic
 
 
 
---
+---
+.header[Global Illumination]
 
-.center[<img src="img/global_illumination_11.png" alt="global_illumination_11" style="width:80%;">]
+## Path Tracing
+
+
+.center[<img src="img/global_illumination_11.png" alt="global_illumination_11" style="width:70%;">]
 
 ???
 .task[COMMENT:]  
@@ -349,7 +364,10 @@ Nowadays, you can understand path tracing as taking *smart paths*, e.g. tracing 
 
 * Path tracing differs with ray tracing in that instead of following lots of rays, throughout an entire scene, the algorithm only traces the most likely path for the light.
 
---
+---
+.header[Global Illumination]
+
+## Path Tracing
 
 .center[<img src="img/montecarlo_02.png" alt="montecarlo_02" style="width:80%;">]
 
@@ -378,6 +396,7 @@ How to sample and reduce variance is a advanced research topic.
 
 --
 
+<br />
 Just remember that the Monte Carlo integration method only provides you with an approximation of the real solution - but looks almost as good (or even better)!
 
 
@@ -390,13 +409,11 @@ Just remember that the Monte Carlo integration method only provides you with an 
 * Path tracing is the most accurate way of rendering but is also computationally intensive due to the simulation of light/material interaction through many bounces. 
 
 ---
-.header[Global Illumination]
-
-## Path Tracing
+.header[Global Illumination | Path Tracing]
 
 
 .center[<img src="img/pathtracing_01.png" alt="pathtracing_01" style="width:100%;">]  
-[[nvidia]](https://blogs.nvidia.com/blog/2022/03/23/what-is-path-tracing/)
+.footnote[[[nvidia]](https://blogs.nvidia.com/blog/2022/03/23/what-is-path-tracing/)]
 
 ---
 .header[Global Illumination]
@@ -413,15 +430,10 @@ NVIDIA provides hardware that supports real-time ray and path tracing, making it
 
 
 ---
-.header[Global Illumination]
+.header[Global Illumination | Path Tracing]
 
-## Path Tracing
-
-Published by NVIDIA for its RTX Path Tracing SDK: real-time path tracing of a scene called “Transparent Machines,” created by artist Mike Winkelman. Rendering this glass machine requires light to bounce more than 60 times per light path:
-
-
-.center[<img src="img/nvidia_01.png" alt="nvidia_01" style="width:84%;">]  
-[[nvidia]](https://developer.nvidia.com/rtx/path-tracing) 
+.center[<img src="img/nvidia_01.png" alt="nvidia_01" style="width:90%;">]  
+.footnote[[[nvidia]](https://developer.nvidia.com/rtx/path-tracing)]
   
 
 
@@ -429,6 +441,20 @@ Published by NVIDIA for its RTX Path Tracing SDK: real-time path tracing of a sc
 .task[COMMENT:]  
 
 * With recent advances in hardware ray tracing, systems research, stochastic light sampling, and denoising, we are building a path towards path tracing of scenes with billions of triangles and millions of light emitters in real time. This talk presents an overview of our latest research results and performance optimizations working toward real-time path tracing. We also show how to integrate the GeForce SDKs together into a reference path tracer.
+
+---
+.header[Global Illumination]
+
+## Path Tracing
+
+Previous slide:
+
+<br />
+Published by NVIDIA for its RTX Path Tracing SDK: real-time path tracing of a scene called “Transparent Machines,” created by artist Mike Winkelman.  
+
+Rendering this glass machine requires light to bounce more than 60 times per light path.
+
+
 
 ---
 
@@ -441,11 +467,18 @@ Published by NVIDIA for its RTX Path Tracing SDK: real-time path tracing of a sc
 * Photon Mapping
     * Distribute light particles in scene, then ray tracing
     * Good for spatially focused light effects such as caustics
+
+---
+
+## Global Illumination Rendering Algorithms
+
 * Radiosity
     * Finite element method: surfaces are divided into one or more smaller surfaces
     * Light is simulated between patches based on a view factor
     * Reduces the infinite dimensional rendering equation to a finite number of dimensions
     * Efficient for overall smooth lighting and reflections
+
+--
 
 See wiki's [List of methods](https://en.wikipedia.org/wiki/Global_illumination) for rendering global illumination.
 
@@ -500,7 +533,11 @@ https://docs.unrealengine.com/5.0/en-US/global-illumination-in-unreal-engine/
 
 The light baking system in Unreal Engine computes lighting data on the CPU, or GPU, using the Lightmass Global Illumination system. This method of precomputing lighting is used to achieve high-quality results that aren't compromised by real-time limitations by storing the information in textures that are then applied to geometry. This method of lighting cannot be changed dynamically and is ideal for projects where lighting doesn't need to change, or for mobile projects where dynamic lighting is limited. 
 
---
+---
+.header[Global Illumination Rendering Algorithms]
+
+## Example Unreal
+
 * Dynamic
     * *Lumen system*
     * Uses "multiple ray tracing methods"
@@ -548,19 +585,20 @@ Thomas Müller, Fabrice Rousselle, Jan Novák, and Alexander Keller. 2021. **Rea
 
 * learning a neural representation of illumination on large numbers of ground truth images
 
---
+---
+.header[Global Illumination Rendering Algorithms | Neural Global Illumination]
 
-.center[<img src="img/neural_gi_01.jpg" alt="neural_gi_01" style="width:84%;">]  
-[[nvidia]](https://developer.nvidia.com/blog/nvidia-research-learning-and-rendering-dynamic-global-illumination-with-one-tiny-neural-network-in-real-time/) 
+.center[<img src="img/neural_gi_01.jpg" alt="neural_gi_01" style="width:90%;">]  
+.footnote[[[nvidia]](https://developer.nvidia.com/blog/nvidia-research-learning-and-rendering-dynamic-global-illumination-with-one-tiny-neural-network-in-real-time/)]
 
 
 ---
-.header[Global Illumination Rendering Algorithms]
+.header[Global Illumination Rendering Algorithms | Neural Global Illumination]
 
-## Neural Global Illumination
 
-.center[<img src="img/neural_gi_02.png" alt="neural_gi_02" style="width:95%;">]  
-[[nvidia]](https://developer.nvidia.com/blog/nvidia-research-learning-and-rendering-dynamic-global-illumination-with-one-tiny-neural-network-in-real-time/) 
+.center[<img src="img/neural_gi_02.png" alt="neural_gi_02" style="width:87%;">]  
+.footnote[[[nvidia]](https://developer.nvidia.com/blog/nvidia-research-learning-and-rendering-dynamic-global-illumination-with-one-tiny-neural-network-in-real-time/)]
+
 
 ---
 .header[Global Illumination Rendering Algorithms]
@@ -580,3 +618,6 @@ Stavros Diolatzis, Julien Philip, and George Drettakis. 2022. **Active Explorati
 ## STAR Neural Rendering
 
 Tewari, A.; Fried, O.; Thies, J.; Sitzmann, V.; Lombardi, S.; Sunkavalli, K.; Martin‐Brualla, R.; Simon, T.; Saragih, J.; Nießner, M.; Pandey, R.; Fanello, S.; Wetzstein, G.; Zhu, J.‐Y.; Theobalt, C.; Agrawala, M.; Shechtman, E.; Goldman, D. B.; Zollhöfer, M. (2020). **State of the Art on Neural Rendering**. Computer Graphics Forum. 39 (2): 701–727. arXiv:2004.03805. doi:10.1111/cgf.14022. S2CID 215416317.
+
+---
+template:inverse
