@@ -62,4 +62,4 @@ You can find explanations about setting up a vertex and a fragment shader within
 
 ### GPGPU Particle Simulation
 
-6. GPGPU Particle Simulation: [stepa](./06_gpgpu/gpgpu_steps.md), [code](./06_gpgpu/gpgpu_code.zip)
+6. GPGPU Particle Simulation: [steps](./06_gpgpu/gpgpu_steps.md), [code](./06_gpgpu/gpgpu_code.zip)

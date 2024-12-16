@@ -211,7 +211,7 @@ Instead of reading and writing to one FBOs continuously, the are two FBOs, switc
   
 While framebuffer 1 is active and "rendered" (e.g., as prost-processing effect literally displayed), we compute the next simulation step and write that data into one framebuffer 2. In the next render call, framebuffer 2 become active and is "rendered", while we write into framebuffer 1. And so on.
 
-![fbo_06](./img/fbo_06.png)  
+![fbo_05](./img/fbo_05.png)  
 
 [[1]](https://threejs-journey.com/lessons/gpgpu-flow-field-particles-shaders)
 
