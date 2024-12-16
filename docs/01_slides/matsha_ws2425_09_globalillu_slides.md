@@ -123,7 +123,7 @@ Local illumination
 --
 
 Global illumination
-* Ojects do not only reflect light to the viewer, but also to other objects
+* Objects do not only reflect light to the viewer, but also to other objects
 
 
 ---

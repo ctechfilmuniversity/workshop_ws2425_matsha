@@ -46,7 +46,7 @@ Tutorial is based on Brunos excellent tutorial three.js journey, specifically on
 
 ## Scene
 
-We start with a sphere made out of particles using a ShaderMaterial. The size of the particles is already handled in the vertex shader with perspective and we can control it using the uSize gui element. Particles set to be shaped as discs in the fragment shader.
+We start with a sphere made from particles using a ShaderMaterial. The size of the particles is already handled in the vertex shader with perspective and we can control it using the uSize gui element. Particles set to be shaped as discs in the fragment shader.
 
 Then it is our goal to make the particles seem to move influenced by various streams pushing them around. This effect is based on two core techniques:
 
@@ -77,7 +77,7 @@ In a flow field, the trajectory of the particle is unpredictable and keeps on ev
 
 Unfortunately, the vertex and fragment shader programs, we have used so far are *stateless*, meaning they have no memory and one shader pipeline execution know nothing about the past, the future or its neighbors.
 
-For have a kind of memory within our shader pipeline, we can use a GPGPU shader program. The GPGPU shader program supports us to process and save data using the GPU, utilizing a Frame Buffer Object (FBO).
+For having a kind of memory within our shader pipeline, we can use a GPGPU shader program. The GPGPU shader program supports us to process and save data using the GPU, utilizing a Frame Buffer Object (FBO).
 
   
 [[1]](https://threejs-journey.com/lessons/gpgpu-flow-field-particles-shaders)
@@ -95,13 +95,13 @@ In Three.js we create FBOs as render target using the [WebGLRenderTarget](https:
   
 For now, you can imagine such a FBO, which is also called renderbuffer, as a texture that is not applied within the scene, e.g., for coloring, but is purely used to save and hand data around.
 
-We write to the renderbuffer in the following scenario in a additional glsl shader program. In that additional, general purpose shader, we compute the particle simulation in parallel, making it performant. 
+We write to the renderbuffer in the following scenario in an additional glsl shader program. In that additional, general purpose shader, we compute the particle simulation in parallel, making it performant. 
 
 Specifically, for the data handling for simulating the particles of a flow field, one pixel of the FBO texture saves the `x, y, z` coordinates of one particle in its `r, g, b` channel. Hence, the size of the texture needs to be at least as big as the number of particles we have.
 
 ![fbo_01](./img/fbo_01.png)  
 
-The images shows such a render target texture, with each pixel containing in its `r, g, b` channel the `x, y, z` coordinates of one particle.
+The image shows such a render target texture, with each pixel containing in its `r, g, b` channel the `x, y, z` coordinates of one particle.
   
 The render target texture also has an alpha channel, which can be used for something else, e.g., the size of the particle.
 
@@ -110,11 +110,11 @@ The render target texture also has an alpha channel, which can be used for somet
 
 #### FBO Texture Size
 
-Each pixel of the FBO corresponds to one particle. E. g., if we have 9 particles, we need 9 pixels on the FBOs. Since FBOs are pretty much like 2D texture, they are rectangular. In order to make calculations easier (and potentially more performant), FBOs are usually squares.
+Each pixel of the FBO corresponds to one particle. E. g., if we have 9 particles, we need 9 pixels on the FBOs. Since FBOs are just about like 2D texture, they are rectangular. To make calculations easier (and potentially more performant), FBOs are usually squares.
 
 The with and height of a FOB is given by the square root of the number of particles. 
 
-For 9 particles, the square root of 9 is 3 and we need a 3 by 3 FBO:  
+For 9 particles, the square root of 9 is 3, and we need a 3 by 3 FBO:  
 
 ![fbo_02](./img/fbo_02.png)  
 
@@ -179,10 +179,10 @@ Alternatively, we might want to map from a 2D array to 1D arrays with 1D, 2D and
 
 
 for (let y = 0; y < texture.size; y++) {
-    for (let x = 0; x < texture.size; x++) {
+    for (let x = 0; x < gpgpu.size; x++) {
 
         // Coordinates for 1D, 2D and 3D arrays
-        const i = (y * texture.size) + x; // Size array
+        const i = (y * gpgpu.size) + x; // Size array
         const i2 = i * 2;               // UV array
         const i3 = i * 3;               // RGB array
 
@@ -207,9 +207,9 @@ for (let y = 0; y < texture.size; y++) {
 
 Technically, it is not possible to read and write the same FBO, which is why we need to have two of them. 
   
-Instead of reading and writing to one FBOs continuously, the are two FBOs, switching the active framebuffer with each render call. 
+Instead of reading and writing to one FBOs continuously, there are two FBOs, switching the active framebuffer with each render call. 
   
-While framebuffer 1 is active and "rendered" (e.g., as prost-processing effect literally displayed), we compute the next simulation step and write that data into one framebuffer 2. In the next render call, framebuffer 2 become active and is "rendered", while we write into framebuffer 1. And so on.
+While framebuffer 1 is active and "rendered" (e.g., as prost-processing effect literally displayed), we compute the next simulation step and write that data into one framebuffer 2. In the next render call, framebuffer 2 becomes active and is "rendered", while we write into framebuffer 1. And so on.
 
 ![fbo_05](./img/fbo_05.png)  
 
@@ -245,7 +245,7 @@ Each variable has a fragment shader that defines the computation made to obtain 
 
 #### Rendering
 
-The renderer has two render targets per variable and switches them back and for per render call. Textures from the current frame are used as inputs to render the textures of the next frame.
+The renderer has two render targets per variable and switches them back and forth per render call. Textures from the current frame are used as inputs to render the textures of the next frame.
 
 The render targets of the variables can be used as input textures for your visualization shaders, in the sense of "accessing the memory".
 
@@ -366,13 +366,11 @@ renderScene();
 ```
 
 
-[[1]](https://threejs-journey.com/lessons/gpgpu-flow-field-particles-shaders)
-
-[[2]](https://github.com/mrdoob/three.js/blob/8286a475fd8ee00ef07d1049db9bb1965960057b/examples/jsm/misc/GPUComputationRenderer.js)
+[[1]](https://threejs-journey.com/lessons/gpgpu-flow-field-particles-shaders)[[2]](https://github.com/mrdoob/three.js/blob/8286a475fd8ee00ef07d1049db9bb1965960057b/examples/jsm/misc/GPUComputationRenderer.js)
 
 ## Tutorial
 
-Again, the tutorial is based on [[1] Bruno Simon. 2024. three.js journey - 41 - GPGPU Flow Field Particles.](https://threejs-journey.com/lessons/gpgpu-flow-field-particles-shaders). I do not add there reference again one more time, assume, all in its core is based on the tutorial with some re-naming, re-structuring and minor adjustments from me.
+Again, the tutorial is based on [[1] Bruno Simon. 2024. three.js journey - 41 - GPGPU Flow Field Particles](https://threejs-journey.com/lessons/gpgpu-flow-field-particles-shaders). I do not add reference links below. Instead, assume, everything is in its core  based on the tutorial with some re-naming, re-structuring and adjustments from me.
 
 ### Geometry
 
@@ -393,26 +391,6 @@ Add to that:
 baseGeometry.count = baseGeometry.mesh.attributes.position.count;
 ```
 
-In the `//// PARTICLES` section, replace the the `particles.geometry` with the `baseGeometry.mesh` on the Points:
-
-```js
-//scene.js
-
-//// PARTICLES
-
-const particles = {};
-
-//...
-
-TODO:
-// Points
-
-// REPLACE: particles.points = new THREE.Points(baseGeometry.mesh, particles.material);
-
-// WITH
-particles.points = new THREE.Points(particles.geometry, particles.material);
-scene.add(particles.points);
-```
 
 ### GPUComputationRenderer 
 
@@ -461,18 +439,18 @@ We create one texture object (meaning one framebuffer) using the createTexture()
 const textureParticles = gpgpu.computation.createTexture();
 ```
 
-It’s a [DataTexture](https://threejs.org/docs/index.html?q=DataTexture#api/en/textures/DataTexture), which is similar to other Three.js textures but the pixels data is set up as an array which we can access in `textureParticles.image.data`.  
+It’s a [DataTexture](https://threejs.org/docs/index.html?q=DataTexture#api/en/textures/DataTexture), which is similar to other Three.js textures, but the pixels, data is set up as an array which we can access in `textureParticles.image.data`.  
   
 Have a look at the data with `console.log(textureParticles.image.data);`.
 
-We get a bunch of `0`. Each set of 4 values corresponds to one particle because each set of 4 values are the `r`, `g`, `b` and a channels of one pixel.
+We get a bunch of `0`. Each set of 4 values corresponds to one particle because each set of 4 values are the `r`, `g`, `b` and `a` channels of one pixel.
 
 Let’s keep the baseParticlesTexture like this for now, and later, we are going to put the particles positions in there instead of those `0`.
 
 
 ### The Particles Variable
 
-In the GPUComputationRenderer calls each framebuffer is called a “variable”. In our case, we have only one variable and it’s the particles.
+In the GPUComputationRenderer class each framebuffer is called a “variable”. In our case, we have only one variable and it’s the particles.
 
 To create a variable, we connect the texture (`textureParticles`) that we created earlier to the GPUComputationRenderer object. In addition, we need to send a GLSL shader program that updates the texture.
 
@@ -564,7 +542,7 @@ renderScene();
 
 Before trying to use the output of GPUComputationRenderer on the particles, we are going to test what’s in there.
 
-In the end, what we want from GPUComputationRenderer is a texture containing the particles coordinates. We are going to create a plane and apply the GPUComputationRenderer output texture to it, just to see what we get.
+In the end, what we want from GPUComputationRenderer is a texture containing the particles' coordinates. Just to see what we get, we create a plane and apply the GPUComputationRenderer output texture to it.
 
 Back to the GPU Compute section: create a debug plane using PlaneGeometry and MeshBasicMaterial, move it sideways and add it to the scene:
 
@@ -588,7 +566,7 @@ scene.add(gpgpu.debug);
 
 In the above code, we access the framebuffer texture with `gpgpu.computation.getCurrentRenderTarget(gpgpu.particlesVariable).texture` and use that as color texture for the Plane.
 
-However, we get a fully red plane because our shader program `textureParticles.glsl` only outputs red. For now this is the desired behavior, our setup works so far!
+However, we get a fully red plane because our shader program `textureParticles.glsl` only outputs red. For now, this is the desired behavior, our setup works so far!
 
 ### Updating and Piping Particle Data
 
@@ -605,6 +583,8 @@ Right after creating the textureParticles, use a for(…) to loop from 0 to base
 // Create the "Texture-Memory" framebuffer
 const textureParticles = gpgpu.computation.createTexture();
 
+
+//Add:
 
 // Writing into the rgba channels of the textureParticles texture
 // The required access is textureParticles.image.data and
@@ -654,7 +634,7 @@ void main() {
 
 Each square of the plane corresponds to one pixel of the uTextureParticles texture which, itself, corresponds to the coordinates of each particle.
 
-And the cool part is that the data is persisting, meaning that if we update particle, we will get the updated version in the next frame and we can keep on updating it.
+And the cool part is that the data is persisting, meaning that if we update a particle, we get the updated version in the next frame, and we can keep on updating it.
 
 As a test try the following:
 
@@ -673,16 +653,14 @@ The pixels become more green. Since green corresponds to the y coordinate, it me
 
 Note that rgba and xyzw are interchangeable. You can use one or the other and have the same effect. But since we consider the pixels as particles, it makes sense to use xyz.
 
-After a few seconds, the pixels stop changing and you might think that the particles will also stop moving, but the value actually keeps on getting higher. It’s just that the color channels are visually confined to the range between 0 to 1.
+After a few seconds, the pixels stop changing, and you might think that the particles will also stop moving, but the value actually keeps on getting higher. It’s just that the color channels are visually confined to the range between 0 and 1.
 
 
 ### GPGPU Particles Positions
 
-Our setup, even though basic, is ready and we now want to use that texture to position the particles.
+Our setup, even though basic, is ready for using the texture to position the particles. For that we need to send some additional "helper" data to particles.vert. For that we are using BufferGeometry which is much more efficient than just attaching attributes to mesh.
 
-Currently, the particles are using the baseGeometry.mesh as the geometry when instantiating the Points, but we want to use the GPGPU texture instead.
-
-Let’s start from an empty geometry. In the Particles section, create a BufferGeometry, save it as particles.geometry and send it to the Points:
+Before the ling `particles.material = new THREE.ShaderMaterial()` add the following lines to set up BufferGeometry: 
 
 ```js
 //scene.js
@@ -698,21 +676,17 @@ particles.geometry = new THREE.BufferGeometry();
 // with 0 as start
 particles.geometry.setDrawRange(0, baseGeometry.count);
 
-// Points
-particles.points = new THREE.Points(particles.geometry, particles.material)
-scene.add(particles.points)
 
+
+// The known ShaderMaterial setup
+// piping data into and applying
+// vertex and fragment shader
+particles.material = new THREE.ShaderMaterial({
 //...
-
-// Points
-// Adding the template to the scene
-// One point per mesh vertex
-// particles.points = new THREE.Points(baseGeometry.mesh, particles.material);
-particles.points = new THREE.Points(particles.geometry, particles.material);
-scene.add(particles.points);
+})
 ```
 
-We dont' compute any animation yet, so there are currently thousands of particles at the center of the scene and we are going to use the GPGPU to move them.
+We don't compute any animation yet, so there are currently thousands of particles at the center of the scene and we are going to use the GPGPU to move them.
 
 In the ShaderMaterial, send a new `uParticleUvsTexture` uniform using the Uniform class and keep it empty for now:
 
@@ -727,6 +701,7 @@ particles.material = new THREE.ShaderMaterial({
     //...
     uniforms:
     {
+        //...
         uParticleUvsTexture: new THREE.Uniform() // Set in the render loop
     }
 })
@@ -740,7 +715,7 @@ In the `renderScene` function, update the uParticleUvsTexture uniform using the 
 
 const renderScene = () => {
 
-    ...
+    //...
 
     // Computing the texture processing
     gpgpu.computation.compute();
@@ -750,7 +725,7 @@ const renderScene = () => {
     // the gpu renderer output returns
     particles.material.uniforms.uParticleUvsTexture.value = gpgpu.computation.getCurrentRenderTarget(gpgpu.particlesVariable).texture;
 
-    ...
+    //...
 }
 ```
 
@@ -790,7 +765,7 @@ The purple crosses are at the center of each cell. To get there, we compute the 
 
 //// PARTICLES
 
-//...
+const particles = {};
 
 // Data Computation
 const particlesUvArray = new Float32Array(baseGeometry.count * 2);
@@ -820,7 +795,7 @@ While we are at, we already save a random value later used for the particle size
 
 We can now send the above array data as attributes to the shader programs.
 
-After:
+After (and before the `ShaderMaterial()`):
 
 ```js
 //scene.js
@@ -859,8 +834,8 @@ We can now pick the color from uParticleUvsTexture using texture() at the aParti
 
 ```glsl
 // particles.vert
-void main()
-{
+void main() {
+
     // Accessing the passed in texture with the
     // UVs that are computed in the scene
     vec4 particle = texture(uParticleUvsTexture, aParticlesUv);
@@ -874,8 +849,8 @@ Next, use it for the modelPosition instead of position by swizzling the xyz sinc
 ```glsl
 // particles.vert
 
-void main()
-{
+void main() {
+
     vec4 particle = texture(uParticlesTexture, aParticlesUv);
 
     // Final position
@@ -934,9 +909,9 @@ It’s because the flow field stays the same in time and particles end up follow
 
 We want to add a uTime uniform, but be careful, as we want to set it on the GPGPU variable handling the particles, not the final particles ShaderMaterial.
 
-To do that, you can access the GPGPU ShaderMaterial handling the particles using gpgpu.particlesVariable.material and it works like any ShaderMaterial, meaning that it has a uniforms property.
+To do that, you can access the GPGPU ShaderMaterial handling the particles using gpgpu.particlesVariable.material, and it works like any ShaderMaterial, meaning that it has a uniforms property.
 
-To the save some effort, we are creating all uniforms that we are going to use later in this tutorial:
+To save some effort, we are creating all uniforms that we are going to use later in this tutorial:
 
 ```js
 // scene.js
@@ -1089,7 +1064,7 @@ Make sure to keep the gl_FragColor update outside of the if and else statements.
 
 We now want to reset the position, but we don’t have access to the initial position. Even though in the first frame uTextureParticles contains the initial positions, it gets updated after each compute().
 
-To fix that, we are already sending as uniform `uBase` which is a texture that containing the initial positions. Now, we can simply use it:
+To fix that, we are already sending as uniform `uBase` which is a texture that contains the initial positions. Now, we can simply use it:
 
 
 ```glsl
@@ -1131,7 +1106,7 @@ void main() {
 ```
 We are also adding the `fract()` for the a, for the case that a goes beyond 1.0. 
 
-Additionally, to have no issues with different update rates of high-frequency monitors and with that faster deaths of the particles, we pipe in the `uDeltaTime` (set in `scene.js`) at all value incremente for more control over the rate of change based on the actual passed time.
+Additionally, to have no issues with different update rates of high-frequency monitors and with that faster deaths of the particles, we pipe in the `uDeltaTime` (set in `scene.js`) at all value increment for more control over the rate of change based on the actual passed time.
 
 It’s because we increment the life by 0.01 with each frame, regardless of the frame rate.
 
@@ -1259,9 +1234,9 @@ void main()
 
 ### Particle Coloring
 
-Well, the coloring is really no polished yet. Here, you could try to merge in all the glorious stuff, we learned in the previous sessions.
+Well, the coloring is really not polished yet. Here, you could try to merge in all the glorious stuff, we learned in the previous sessions.
 
-As of now the coloring has three parts:
+As of now, the coloring has three parts:
 
 1. Converting the point space to discs as shape for the particles
 2. An interpolation of two colors in screen space from the origin (the center of the screen) to the window borders.
@@ -1328,7 +1303,7 @@ void main()
 }
 ```
 
-For that we are using the size of the screen, which we are sending from `scene.js` as uniform. With that we normalize the fragment coordinate with `vec2 p = (2.0 * gl_FragCoord.xy - uResolution.xy) / uResolution.y;` to be between -1..1 with the origin in the middle. With the normalized fragment coordinate we compute the distance to the origin and based on the distance mix between two colors.
+We are using the size of the screen, which we are sending from `scene.js` as uniform. With that value, we normalize the fragment coordinate with `vec2 p = (2.0 * gl_FragCoord.xy - uResolution.xy) / uResolution.y;` to be between -1..1 with the origin in the middle. With the normalized fragment coordinate we compute the distance to the origin, and based on the distance mix between two colors.
 
 Lastly we add rim. Why? Well why not... 😎
 
@@ -1377,9 +1352,9 @@ Developing different coloring and maybe even some shading for the particles, wit
 ## Next Steps
 
 * Add UI controls for picking the colors, used in the fragement shader.
-* Use a sophisticated .glb model. The base code for that is still as comments still in the scene file, but need some re-tweaking.
+* Use a sophisticated .glb model. The base code for that is still as comments still in the scene file, but needs some re-tweaking.
 * Change the shape of the particles
-* Control simulation parameter with the cursor, e.g. clicking increases the inflience and/or strength of the simulation.
+* Control the simulation parameters with the cursor, e.g. clicking increases the inflience and/or strength of the simulation.
 
 
 ## References
