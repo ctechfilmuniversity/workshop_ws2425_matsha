@@ -179,10 +179,10 @@ Alternatively, we might want to map from a 2D array to 1D arrays with 1D, 2D and
 
 
 for (let y = 0; y < texture.size; y++) {
-    for (let x = 0; x < gpgpu.size; x++) {
+    for (let x = 0; x < texture.size; x++) {
 
         // Coordinates for 1D, 2D and 3D arrays
-        const i = (y * gpgpu.size) + x; // Size array
+        const i = (y * texture.size) + x; // Size array
         const i2 = i * 2;               // UV array
         const i3 = i * 3;               // RGB array
 
